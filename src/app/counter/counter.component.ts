@@ -28,4 +28,8 @@ export class CounterComponent implements OnInit {
   isLessOrEqualThanTen(): boolean{
     return this.count <= 10;
   }
+
+  reset(): void {
+    this.count = 0;
+  }
 }

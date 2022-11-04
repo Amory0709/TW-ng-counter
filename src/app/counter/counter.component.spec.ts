@@ -79,4 +79,51 @@ describe('CounterComponent', () => {
     expect(component.isGreaterOrEqualThanZero()).toBeTrue();
   })
 
+  it('should return true when count number less than 10', () => {
+    // given
+    component.count = 1;
+
+    // when
+    // fixture.detectChanges();
+
+    // then
+    expect(component.isLessOrEqualThanTen()).toBeTrue();
+  })
+
+  it('should return false when count number larger than 10', () => {
+    // given
+    component.count = 11;
+
+    // when
+    // fixture.detectChanges();
+
+    // then
+    expect(component.isLessOrEqualThanTen()).toBeFalse();
+  })
+
+  it('should display 0 when click reset', () => {
+    // given
+    component.count = 1;
+
+    // when
+    // fixture.detectChanges();
+
+    // then
+    expect(component.isGreaterOrEqualThanZero()).toBeTrue();
+  })
+
+  it('should show 0 when click reset button', () => {
+    // given
+    component.count = -1;
+    fixture.detectChanges()
+    // when
+    const resetBtn = fixture.nativeElement.querySelector('[data-test="resetBtn"]')
+    resetBtn.click()
+    fixture.detectChanges()
+
+    // then
+    const displayCount = fixture.nativeElement.querySelector('[data-test="displayCount"]')
+    expect(displayCount.textContent).toEqual('number:0')
+  })
+
 });
