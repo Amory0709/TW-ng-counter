@@ -57,15 +57,26 @@ describe('CounterComponent', () => {
     expect(minusBtn).toBeFalsy();
   })
 
-  it('should hide add button when count number great than 10', () => {
+  it('should return false when count number less than 0', () => {
     // given
-    component.count = 11;
+    component.count = -1;
 
     // when
-    fixture.detectChanges();
+    // fixture.detectChanges();
 
     // then
-    const plusBtn = fixture.nativeElement.querySelector('[data-test="plusBtn"]')
-    expect(plusBtn).toBeFalsy();
+    expect(component.isGreaterOrEqualThanZero()).toBeFalse();
   })
+
+  it('should return true when count number larger than 0', () => {
+    // given
+    component.count = 1;
+
+    // when
+    // fixture.detectChanges();
+
+    // then
+    expect(component.isGreaterOrEqualThanZero()).toBeTrue();
+  })
+
 });
