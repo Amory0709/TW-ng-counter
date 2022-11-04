@@ -13,11 +13,15 @@ export class CounterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  increase(): void {
+  increment(): void {
     this.count++;
   }
 
-  decrease(): void {
+  decrement(): void {
     this.count--;
+  }
+
+  isGreaterOrEqualThanZero(): boolean {
+    return this.count >= 0;
   }
 }

@@ -36,12 +36,24 @@ describe('CounterComponent', () => {
   it('should substract 1 when click minus button', () => {
     // given
     component.count = 0;
-    const plusBtn = fixture.nativeElement.querySelector('[data-test="minusBtn"]')
+    const minusBtn = fixture.nativeElement.querySelector('[data-test="minusBtn"]')
     // when
-    plusBtn.click();
+    minusBtn.click();
     fixture.detectChanges();
     // then
     const displayCount = fixture.nativeElement.querySelector('[data-test="displayCount"]')
     expect(displayCount.textContent).toEqual('number:-1')
+  })
+
+  it('should hide minus button when count number less than 0', () => {
+    // given
+    component.count = -1;
+    
+    // when
+    fixture.detectChanges();
+
+    // then
+    const minusBtn = fixture.nativeElement.querySelector('[data-test="minusBtn"]')
+    expect(minusBtn).toBeFalsy();
   })
 });
